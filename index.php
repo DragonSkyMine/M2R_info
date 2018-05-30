@@ -1,3 +1,5 @@
+<?php include_once("dao.php"); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -8,5 +10,9 @@
   </head>
   <body>
     <h1>Bonjour</h1>
+    <?php
+      $dao = new dao();
+      $dao->getAuthors("John Blaint");
+    ?>
   </body>
 </html>
