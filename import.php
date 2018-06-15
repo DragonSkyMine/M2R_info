@@ -1,5 +1,6 @@
 <pre>
   <?php
+  require_once 'dao.php';
 
   $dbname = "m2r_info";
   $login = "root";
@@ -9,13 +10,14 @@
 
 
   function enregistreArticle($val, $bdd) {
-    $req = $bdd->prepare("INSERT INTO articles (titre, datea, journal, auteurs, abstract) VALUES (:titre, :datea, :journal, :auteurs, :abstract)");
+    $req = $bdd->prepare("INSERT INTO articles (titre, datea, journal, auteurs, abstract, keywords) VALUES (:titre, :datea, :journal, :auteurs, :abstract, :keywords)");
     $req->execute(array(
       "titre" => $val['titre'],
       "datea" => $val['datea'],
       "journal" => $val['journal'],
       "auteurs" => join(",", $val['auteurs']),
-      "abstract" => $val['abstract']
+      "abstract" => $val['abstract'],
+      "keywords" => $val['keywords']
     ));
   }
 
@@ -23,12 +25,12 @@
 
   $file_handle = fopen("outputacm.txt", "r");
 
-  $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "");
+  $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "", 'keywords' => "");
   while (!feof($file_handle)) {
     $line = fgets($file_handle);
     if ($line == "\n") {
       enregistreArticle($article, $bdd);
-      $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "");
+      $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "", 'keywords' => "");
     } else {
       switch (str_split($line, 2)[0]) {
         case '#*':
@@ -56,6 +58,11 @@
         // code...
         break;
       }
+      $article['keywords'] = array_diff(explode(' ', strtolower($article['titre']).' '.strtolower($article['abstract'])), DAO::getStopWords());
+      foreach ($article['keywords'] as $key => $value) {
+        $article['keywords'][$key] = trim($article['keywords'][$key], ':,;-?!(){}[]_=+');
+      }
+      $article['keywords'] = implode(',' ,$article['keywords']);
       //print_r($article);
     }
   }

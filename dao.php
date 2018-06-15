@@ -2,7 +2,7 @@
 
     class DAO{
 
-        private $db;
+        public $db;
         private $stop_words;
 
         public function __construct(){
@@ -199,7 +199,20 @@
                 'yours',
                 'yourself',
                 'yourselves',
-                'zero'
+                'zero',
+                '.',
+                ',',
+                ':',
+                '-',
+                '_',
+                '(',
+                ')',
+                '{',
+                '}',
+                '[',
+                ']',
+                '"',
+                "'",
             );
         }
 
