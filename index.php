@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" charset="utf-8"></script>
+    <script src="notify.js" charset="utf-8"></script>
   </head>
 
   <body>
@@ -27,6 +28,16 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+  </br>
+
+    <div id="res-of-query">
+      </br>
+      <h1>Résultat(s) :</h1>
+      <hr>
+      <div id="content-query">
       </div>
     </div>
   </body>
