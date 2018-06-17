@@ -26,11 +26,13 @@
   $file_handle = fopen("outputacm.txt", "r");
 
   $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "", 'keywords' => "");
-  while (!feof($file_handle)) {
+  $i = 0;
+  while (!feof($file_handle) && $i < 5000) {
     $line = fgets($file_handle);
     if ($line == "\n") {
       enregistreArticle($article, $bdd);
       $article = array('titre' => "", 'datea' => "", 'journal' => "", 'auteurs' => "", 'abstract' => "", 'keywords' => "");
+      $i++;
     } else {
       switch (str_split($line, 2)[0]) {
         case '#*':

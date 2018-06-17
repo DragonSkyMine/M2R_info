@@ -3,7 +3,7 @@ $(function() {
     $("#res-of-query").hide();
 
     $("#btnSearch").click(function() {
-    
+
         // On récupère la requête
         var query = $("#txtSearch").val();
 
@@ -12,26 +12,25 @@ $(function() {
             $.notify("Requête vide !", "error");
         }
         else{
-            // $.post("blabla.php",
-            // {
-            //     query: query,
-            // },
-            // function(res){
-
+            $.post("ajax.php",
+            {
+              query: query,
+            },
+            function(res){
                 // On clear la div content
                 $("#content-query").empty();
 
                 // Ajout du res dans la div
+                $("#content-query").append(res);
 
                 // Affichage div
                 $("#res-of-query").show();
-            
-            // });
+            });
 
         }
 
 
-    
+
     });
 
 });
