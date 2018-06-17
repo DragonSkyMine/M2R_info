@@ -1,0 +1,73 @@
+body {
+    background: #2E2F40;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav{
+    max-width: 1000px;
+    border-bottom: 100px solid #860255;
+    border-left: 40px solid transparent;
+    margin: 0 auto;
+    height: 0px;
+    box-shadow: 20px 17px 27px rgba(0, 0, 0, 0.15);
+}
+
+.nav .inner{
+    width: 100%;
+    height: 100px;
+    right: 0;
+    overflow: hidden;
+    background: #860255;
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #860255), color-stop(100, #EF4B3F));
+    /* IE10+ */
+    background-image: -ms-linear-gradient(left, #860255 0%, #EF4B3F 100%);
+    /* Mozilla Firefox */
+    background-image: -moz-linear-gradient(left, #860255 0%, #EF4B3F 100%);
+    /* Opera */
+    background-image: -o-linear-gradient(left, #860255 0%, #EF4B3F 100%);
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-linear-gradient(left, #860255 0%, #EF4B3F 100%);
+    /* W3C Markup */
+    background-image: linear-gradient(to right, #860255 0%, #EF4B3F 100%);
+}
+
+
+
+.searchField {
+    display: inline-block;
+    width: 97%;
+    height: 38px;
+    margin: 10px;
+    border: 1px solid grey;
+    font-size: 20px;
+    outline: grey;
+    padding: 5px;
+    padding-right: 50px;
+    cursor: pointer;
+    color: grey;
+    box-sizing:border-box;
+}
+.searchInput {
+    margin-top: 1%;
+    position: relative;
+}
+.searchInput .glyphicon {
+    position: absolute;
+    z-index: 2;
+    right: 28px;
+    font-size: 24px;
+    width: 24px;
+    color: #4b4b4b;
+    text-align: center;
+    padding: 6px 0;
+    top: 11px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+  
